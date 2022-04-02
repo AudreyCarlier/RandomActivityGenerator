@@ -1,58 +1,17 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
 body {
 
-    background: rgb(99,0,99);
-    background: linear-gradient(90deg, rgb(82, 33, 82) 0%, rgba(0,0,140,1) 49%, rgba(0,110,133,1) 100%);
+  background:rgb(39, 39, 39);
+
 }
+
 
 
 #app {
-margin : auto;
+border-radius: 10px;
+padding: 20px;
+    margin-top: 3%;
     background-color: grey;
-    height: 100%;
+
 }
 
 #titre {
@@ -82,10 +41,32 @@ h1 {
 
 margin: 40px;
     padding : 40px;
-    background-color: rgb(148, 148, 148);
+
    
 }
 
+#participantsSelect, #typeSelect {
+    display: inline-block;
+        width: 25%;
+    }
+
+    #activitylink {
+
+        color: white;
+    }
+
+#tableContainer {
+    height: 300px;
+    overflow: auto;
+    margin-bottom: 60px;
+  
+}
+
+footer {
+
+    margin-top: 100px;
+}
+     
 @media(max-width:992px){
 
     .activity {
@@ -99,4 +80,26 @@ margin: 40px;
        
     }
 
+    #participantsSelect, #typeSelect {
+            width: 100%;
+        }
+h1 {
+
+    font-size: 1.5rem;
 }
+
+#tableContainer {
+    height: 500px;
+    overflow: auto;
+    margin-bottom: 120px;
+  
+}
+
+footer {
+    position: relative;
+    bottom:0;
+    width:100%;
+    margin-top: 60px;
+}
+}
+

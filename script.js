@@ -1,21 +1,36 @@
+function googleTranslateElementInit() { 
+    new google.translate.TranslateElement(
+        {pageLanguage: 'en'}, 
+        'google_translate_element'
+    ); 
+} 
+
+
+ 
+
 const fetchDataBtn = document.querySelector('#submit')
-const saveDataBtn = document.querySelector('#save-data')
+const showHistoryBtn = document.querySelector('#historybutton')
 const card = document.querySelector('#activity-card')
-const savedData = document.getElementById('#content-2')
 const title = document.querySelector('#activitytitle')
 const type = document.querySelector('#activitytype')
 const pax = document.querySelector('#activityparticipants')
 const price = document.querySelector('#activityprice')
+const history = document.querySelector('tbody')
+const paxselect = document.getElementById('participantsSelect')
+const typeselect = document.getElementById('typeSelect')
+const historyTable = document.getElementById('tableContainer')
+
+let historyArray = []
 
 let div = document.querySelector("#content-2")
 
 const getData = function() {
-  title.innerText = 'Loading....'
-  type.innerText = ''
-  pax.innerText = ''
- price.innerText = ''
+fetchDataBtn.innerText = 'Loading....'
 
-  fetch("https://www.boredapi.com/api/activity")
+
+
+
+  fetch("https://www.boredapi.com/api/activity?participants=" + paxselect.value + '&type=' + typeselect.value)
     .then(res => res.json())
     .then( (data) => {
       console.log(data);
@@ -30,32 +45,73 @@ const getData = function() {
         data.price = "No"
       }
 
-     title.innerHTML = data.activity 
+      console.log(historyArray)
+      console.log(historyArray.includes(title.textContent))
+
+      if (data.activity != undefined) {
+      let activityTitle = data.activity 
+
+     title.innerHTML = '<a id="activitylink" href="https://google.com/search?q=' + activityTitle +'" target="_blank">' + activityTitle +' <i class="fa-solid fa-white fa-arrow-up-right-from-square"></i></a>'
       type.innerHTML = 'Type : ' + data.type  
       pax.innerHTML =  'Participants : ' + data.participants
       price.innerHTML = 'Free?  ' + data.price 
 
 
-console.log(data.length)
-
-      var refTable = document.getElementById('TableA');
-
-  // Insère une ligne dans la table à l'indice de ligne 0
-  var nouvelleLigne = refTable.createElement("tr");
-
-  for (var j = 0; i < 4; i++) {
-  var nouvelleCellule = nouvelleLigne.createElement("td");
-
-  // Ajoute un nœud texte à la cellule
-  var cardText = document.createTextNode(card.innerText)
-
-
-  nouvelleCellule.appendChild(cardText);
-}
+    }
+    else {
+      title.innerHTML = '0 result found'
+      type.innerHTML = "Please change your search criteria"  
+      pax.innerHTML =  ''
+      price.innerHTML = '' 
+    }
+   
+    fetchDataBtn.innerText = "Generate random activity"
 
     })
     .catch(error => console.log(error))
+}  
+
+function addToHistory() {
+
+  
+ 
+  if(title.innerHTML != "" && title.innerHTML != "undefined" && title.innerHTML !='0 result found' && historyArray.includes(title.textContent) == false) {
+
+let newRow = document.createElement('tr');
+
+history.append(newRow)
+
+newRow.innerHTML = '<td><a href="https://google.com/search?q=' + title.textContent + '"target="_blank">'+ title.textContent + '</td><td>' + type.textContent + '</td><td>' + pax.textContent + '</td><td>' + price.textContent + '</td><td>'
+
+historyArray.push(title.textContent)
+  
+
+}
+}
+
+function showHistory(){
+
+  if (historyTable.style.visibility === "hidden"){
+
+  historyTable.style.visibility = "visible";
+
+}
+
+else {
+
+  historyTable.style.visibility = "hidden";
+
+}
+  
 }
 
 
+
+
 fetchDataBtn.addEventListener('click', getData)
+fetchDataBtn.addEventListener('click', addToHistory)
+
+showHistoryBtn.addEventListener('click', showHistory)
+
+
+
