@@ -23,9 +23,10 @@
     <div class='row'id="titre">
         <div class="col-12">
         <h1>Random activity generator</h1>
+        
     </div></div>
 
-    <select class="form-select mb-3" aria-label=".form-select" name="participants" id="participantsSelect">
+    <select class="form-select m-3" aria-label=".form-select" name="participants" id="participantsSelect">
         <option value="" selected>--Number of participants--</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -34,7 +35,7 @@
     </select>
 
 
-    <select class="form-select mb-3" aria-label=".form-select" name="type" id="typeSelect">
+    <select class="form-select m-3" aria-label=".form-select" name="type" id="typeSelect">
         <option value="" selected>--Activity type--</option>
         <option value="education">education</option>
         <option value="recreational">recreational</option>
@@ -47,26 +48,30 @@
         <option value="busywork">busywork</option>
     </select>
 
+    
+    <label class="form-check-label " for="price-checkbox">Show only free activities</label>
+    <input type="checkbox" id="price-checkbox" name="price-checkbox" value="0">
 
-    <div id='activity-card' class="card text-white bg-black mb-3">
+
+    <div id='activity-card' class="card text-white bg-dark mb-3">
         <div class="card-body">
           <h5 class="card-title" id="activitytitle"></h5>
-          <p class="card-text" id="activitytype"></p>
-          <p class="card-text" id="activityparticipants"></p>
+          <p class="card-text" id="activitytype">Click the button below to generate random activities</p>
+          <p class="card-text" id="activityparticipants">(You can select your search criteria from the drop-down menus above)</p>
           <p class="card-text" id="activityprice"></p>
         </div>
 
 
-<button class="btn btn-dark justify-content-center " id="submit" type="button">Generate random activity</button>
+<button class="btn bg-black justify-content-center text-white " id="submit" type="button">Generate random activity</button>
 
 </div>
 
-</div>
 
+</div>
 
 <div class="container">
 
-<div class="text-end"><button class="btn btn-secondary justify-content-center btn-sm m-1 " id="historybutton" type="button">Afficher/Cacher l'historique</button></div>
+<div class="text-end"><button class="btn btn-secondary justify-content-center btn-sm m-1 " id="historybutton" type="button">Show/Hide history</button></div>
 
 
 <div class="container" id="tableContainer" style="visibility: hidden">
@@ -77,21 +82,8 @@
 </div>
 </div>
 
-<footer class="d-flex flex-wrap fixed-bottom justify-content-between align-items-center py-3 border-top">
-    <p class="col-md-4 mb-0 text-muted">© 2021 Company, Inc</p>
 
-    <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-    </a>
-
-    <ul class="nav col-md-4 justify-content-end">
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-    </ul>
-  </footer>
+</div>
 <script type="text/javascript" src=
 "https://translate.google.com/translate_a/element.js?
 cb=googleTranslateElementInit">

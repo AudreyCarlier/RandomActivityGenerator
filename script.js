@@ -1,3 +1,5 @@
+// google translate
+
 function googleTranslateElementInit() { 
     new google.translate.TranslateElement(
         {pageLanguage: 'en'}, 
@@ -5,8 +7,7 @@ function googleTranslateElementInit() {
     ); 
 } 
 
-
- 
+// elements du dom 
 
 const fetchDataBtn = document.querySelector('#submit')
 const showHistoryBtn = document.querySelector('#historybutton')
@@ -18,20 +19,26 @@ const price = document.querySelector('#activityprice')
 const history = document.querySelector('tbody')
 const paxselect = document.getElementById('participantsSelect')
 const typeselect = document.getElementById('typeSelect')
+const priceCheckbox = document.getElementById('price-checkbox')
 const historyTable = document.getElementById('tableContainer')
 
 let historyArray = []
 
 let div = document.querySelector("#content-2")
 
+
+
 const getData = function() {
 fetchDataBtn.innerText = 'Loading....'
 
+if (priceCheckbox.checked) {priceCheckbox.value = 0}
+else { priceCheckbox.value = ""}
 
 
-
-  fetch("https://www.boredapi.com/api/activity?participants=" + paxselect.value + '&type=' + typeselect.value)
+  fetch("https://www.boredapi.com/api/activity?participants=" + paxselect.value + '&type=' + typeselect.value + "&price=" + priceCheckbox.value)
+ 
     .then(res => res.json())
+   
     .then( (data) => {
       console.log(data);
 
@@ -59,8 +66,8 @@ fetchDataBtn.innerText = 'Loading....'
 
     }
     else {
-      title.innerHTML = '0 result found'
-      type.innerHTML = "Please change your search criteria"  
+      title.innerHTML = 'No results found'
+      type.innerHTML = "Please change your search criteria and try again"  
       pax.innerHTML =  ''
       price.innerHTML = '' 
     }

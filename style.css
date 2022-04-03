@@ -1,5 +1,5 @@
 body {
-
+height: 100%;
   background:rgb(39, 39, 39);
 
 }
@@ -7,6 +7,7 @@ body {
 
 
 #app {
+
 border-radius: 10px;
 padding: 20px;
     margin-top: 3%;
@@ -56,17 +57,26 @@ margin: 40px;
     }
 
 #tableContainer {
+    
     height: 300px;
     overflow: auto;
     margin-bottom: 60px;
   
 }
 
-footer {
+a {
 
-    margin-top: 100px;
+    color: white;
 }
-     
+
+
+
+
+
+
+
+/* pour les petits écrans */
+
 @media(max-width:992px){
 
     .activity {
@@ -89,17 +99,14 @@ h1 {
 }
 
 #tableContainer {
-    height: 500px;
+    height: 300px;
     overflow: auto;
-    margin-bottom: 120px;
+    padding-bottom: 120px;
   
 }
 
-footer {
-    position: relative;
-    bottom:0;
-    width:100%;
-    margin-top: 60px;
+
+
 }
-}
+
 
