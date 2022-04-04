@@ -4,8 +4,6 @@ height: 100%;
 
 }
 
-
-
 #app {
 
 border-radius: 10px;
@@ -75,7 +73,7 @@ a {
 
 
 
-/* pour les petits écrans */
+/* style écrans max 992 */
 
 @media(max-width:992px){
 

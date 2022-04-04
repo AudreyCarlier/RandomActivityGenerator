@@ -1,4 +1,5 @@
 // google translate
+// TRADUCTION
 
 function googleTranslateElementInit() { 
     new google.translate.TranslateElement(
@@ -7,7 +8,7 @@ function googleTranslateElementInit() {
     ); 
 } 
 
-// elements du dom 
+// MÉTHODES DOM
 
 const fetchDataBtn = document.querySelector('#submit')
 const showHistoryBtn = document.querySelector('#historybutton')
@@ -27,6 +28,8 @@ let historyArray = []
 let div = document.querySelector("#content-2")
 
 
+
+// FONCTION POUR FETCH LES DONNÉES
 
 const getData = function() {
 fetchDataBtn.innerText = 'Loading....'
@@ -59,9 +62,9 @@ else { priceCheckbox.value = ""}
       let activityTitle = data.activity 
 
      title.innerHTML = '<a id="activitylink" href="https://google.com/search?q=' + activityTitle +'" target="_blank">' + activityTitle +' <i class="fa-solid fa-white fa-arrow-up-right-from-square"></i></a>'
-      type.innerHTML = 'Type : ' + data.type  
-      pax.innerHTML =  'Participants : ' + data.participants
-      price.innerHTML = 'Free?  ' + data.price 
+      type.innerHTML = '<b>Type: </b>' + data.type  
+      pax.innerHTML =  '<b>Participants: </b> ' + data.participants
+      price.innerHTML = '<b> Free?  </b>' + data.price 
 
 
     }
@@ -76,13 +79,17 @@ else { priceCheckbox.value = ""}
 
     })
     .catch(error => console.log(error))
+
 }  
+
+
+// AJOUT A L'HISTORIQUE
 
 function addToHistory() {
 
   
  
-  if(title.innerHTML != "" && title.innerHTML != "undefined" && title.innerHTML !='0 result found' && historyArray.includes(title.textContent) == false) {
+  if(title.innerHTML != "" && title.innerHTML != "undefined" && title.innerHTML !='No results found' && historyArray.includes(title.textContent) == false) {
 
 let newRow = document.createElement('tr');
 
@@ -95,6 +102,8 @@ historyArray.push(title.textContent)
 
 }
 }
+
+// SHOW/HIDE HISTORY
 
 function showHistory(){
 
@@ -113,9 +122,10 @@ else {
 }
 
 
-
+// ÉVÉNEMENTS BOUTONS
 
 fetchDataBtn.addEventListener('click', getData)
+
 fetchDataBtn.addEventListener('click', addToHistory)
 
 showHistoryBtn.addEventListener('click', showHistory)
