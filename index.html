@@ -30,7 +30,7 @@
 
 <!-- filtres de recherche -->
 
-    <select class="form-select m-3" aria-label=".form-select" name="participants" id="participantsSelect">
+    <select class="form-select m-3" aria-label=".form-select" name="participants" id="participantsSelect" onchange="changeSelect()">
         <option value="" selected>--Number of participants--</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -39,7 +39,7 @@
     </select>
 
 
-    <select class="form-select m-3" aria-label=".form-select" name="type" id="typeSelect">
+    <select class="form-select m-3" aria-label=".form-select" name="type" id="typeSelect" onchange="changeSelect()">
         <option value="" selected>--Activity type--</option>
         <option value="education">education</option>
         <option value="recreational">recreational</option>

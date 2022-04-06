@@ -98,7 +98,7 @@ h1 {
 
 #tableContainer {
     height: 300px;
-    overflow: auto;
+    overflow: scroll;
     padding-bottom: 120px;
   
 }

@@ -34,16 +34,65 @@ let div = document.querySelector("#content-2")
 const getData = function() {
 fetchDataBtn.innerText = 'Loading....'
 
-if (priceCheckbox.checked) {priceCheckbox.value = 0}
-else { priceCheckbox.value = ""}
+if (priceCheckbox.checked) {
+  
+  priceCheckbox.value = 0
 
+
+}
+else { 
+  
+  priceCheckbox.value = ""
+
+
+}
+
+if (historyArray.includes(title.textContent)) {
 
   fetch("https://www.boredapi.com/api/activity?participants=" + paxselect.value + '&type=' + typeselect.value + "&price=" + priceCheckbox.value)
- 
+
+
+  .then(res => res.json())
+   
+  .then( (data) => {
+
+
+    if (historyArray.includes(data.activity)) {
+
+  
+
+      title.innerHTML = 'No results found'
+      type.innerHTML = "Please change your search criteria and try again"  
+      pax.innerHTML =  ''
+      price.innerHTML = '' 
+  
+      fetchDataBtn.disabled = true;
+      fetchDataBtn.innerText = "Change your search criteria first"
+   
+    }
+
+    else {
+
+      
+    }
+   
+    })
+
+
+
+}
+
+
+
+else
+
+{
+
+  fetch("https://www.boredapi.com/api/activity?participants=" + paxselect.value + '&type=' + typeselect.value + "&price=" + priceCheckbox.value)
+
     .then(res => res.json())
    
     .then( (data) => {
-      console.log(data);
 
       if (data.price == 0){
 
@@ -55,8 +104,8 @@ else { priceCheckbox.value = ""}
         data.price = "No"
       }
 
-      console.log(historyArray)
-      console.log(historyArray.includes(title.textContent))
+      // console.log(historyArray)
+      // console.log(historyArray.includes(title.textContent))
 
       if (data.activity != undefined) {
       let activityTitle = data.activity 
@@ -66,6 +115,7 @@ else { priceCheckbox.value = ""}
       pax.innerHTML =  '<b>Participants: </b> ' + data.participants
       price.innerHTML = '<b> Free?  </b>' + data.price 
 
+      addToHistory()
 
     }
     else {
@@ -81,7 +131,7 @@ else { priceCheckbox.value = ""}
     .catch(error => console.log(error))
 
 }  
-
+}
 
 // AJOUT A L'HISTORIQUE
 
@@ -99,6 +149,7 @@ newRow.innerHTML = '<td><a href="https://google.com/search?q=' + title.textConte
 
 historyArray.push(title.textContent)
   
+
 
 }
 }
@@ -122,11 +173,17 @@ else {
 }
 
 
+function changeSelect() {
+
+  fetchDataBtn.disabled = false;
+  fetchDataBtn.innerText = "Generate random activity"
+
+
+}
+
 // ÉVÉNEMENTS BOUTONS
 
 fetchDataBtn.addEventListener('click', getData)
-
-fetchDataBtn.addEventListener('click', addToHistory)
 
 showHistoryBtn.addEventListener('click', showHistory)
 
